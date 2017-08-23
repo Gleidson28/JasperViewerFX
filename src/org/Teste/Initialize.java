@@ -6,6 +6,7 @@
 
 package org.Teste;
 
+import Decoration.GNDecoration;
 import java.util.HashMap;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -14,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.fxutils.viewer.JasperViewerFX;
+import org.fxutils.viewer.JasperViewerFX2;
 
 /**
  *
@@ -41,6 +43,7 @@ public class Initialize extends Application{
         Scene scene = new Scene(root, 400, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
+
         
         
        

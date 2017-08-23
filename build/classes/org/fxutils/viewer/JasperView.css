@@ -1,0 +1,40 @@
+/* 
+Created on : 15/08/2017, 17:32:17
+Author     : Gleidson Neves da Silveira
+*/
+
+/*.print:hover {
+    -fx-background-color: #cecece;
+    -fx-background-radius: 50px;
+    -fx-opacity: 1.0;
+}*/
+
+.text-field {
+    -fx-padding: 0 0 2 0;
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #808080;
+}
+
+#menu {
+    
+}
+
+#menu .button {
+    -fx-opacity : 0.5;
+    -fx-pref-height : 50px;
+    -fx-pref-width : 50px;
+    -fx-cursor : hand;
+    
+}
+
+#menu .button .jfx-rippler {
+    -jfx-rippler-fill: white;
+}
+
+
+#menu .button:hover {
+    -fx-background-color : #cecece;
+    -fx-background-radius : 50px;
+    -fx-opacity : 1.0; 
+}

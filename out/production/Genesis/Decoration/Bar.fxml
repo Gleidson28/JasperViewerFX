@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="432.0" prefWidth="150.0" styleClass="side-pane" stylesheets="@Designer/Drawered.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Decoration.Controller.BarController">
+   <children>
+      <HBox prefHeight="70.0" prefWidth="150.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/wall.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <JFXButton id="home" alignment="BOTTOM_LEFT" graphicTextGap="10.0" prefHeight="50.0" prefWidth="180.0" ripplerFill="GREY" text="Home" textAlignment="JUSTIFY">
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton alignment="BOTTOM_LEFT" graphicTextGap="10.0" prefHeight="43.0" prefWidth="171.0" ripplerFill="BLACK" text="Clientes">
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/person.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</VBox>

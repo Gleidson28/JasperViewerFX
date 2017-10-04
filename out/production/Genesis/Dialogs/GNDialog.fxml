@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="background" blendMode="MULTIPLY" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="208.0" prefWidth="602.0" style="-fx-background-color: transparent;" stylesheets="@Dialogs.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Dialogs.GNDialogCtrl">
+   <children>
+      <AnchorPane fx:id="body" layoutX="10.0" layoutY="10.0" prefHeight="183.0" prefWidth="592.0" style="-fx-background-color: #fa6800;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="14.0" layoutY="123.0" minHeight="0.0" minWidth="0.0" prefHeight="128.0" prefWidth="605.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER_RIGHT" layoutY="-21.0" prefHeight="118.0" prefWidth="480.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="84.0" prefWidth="480.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <children>
+                              <Text fx:id="content" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="content" wrappingWidth="580.8203125" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox fx:id="buttons" alignment="BOTTOM_RIGHT" prefHeight="43.0" prefWidth="480.0" spacing="5.0">
+                           <padding>
+                              <Insets bottom="10.0" left="5.0" right="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+         <effect>
+            <DropShadow color="#00000081" />
+         </effect>
+      </AnchorPane>
+      <VBox alignment="CENTER" prefHeight="106.0" prefWidth="503.0" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fx:id="header" fill="WHITE" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" text="Header" textOrigin="CENTER" wrappingWidth="576.86328125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>

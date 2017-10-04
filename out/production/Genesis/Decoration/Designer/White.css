@@ -1,0 +1,143 @@
+
+/* 
+    Created on : 02/04/2017, 14:26:00
+    Author     : Gleidson Neves da Silveira
+*/
+
+/*******************************************************
+*                                                      *
+* Universal                                            *
+*                                                      * 
+*******************************************************/
+
+
+.root {
+    -fx-background-color: white;
+}
+
+/*******************************************************
+*                                                      *
+* Hamburger                                            *
+*                                                      * 
+*******************************************************/
+
+
+.jfx-hamburger StackPane{
+    -fx-background-color: rgba(0,0,0,.5);
+    -fx-pref-width: 20px;
+    -fx-pref-height: 2px;
+    -fx-padding: 0 6 0 6;
+}
+
+.jfx-hamburger:hover StackPane{
+    -fx-background-color: black;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 2px;
+    -fx-padding: 0 6 0 6;
+}
+
+.jfx-hamburger:hover{
+    -fx-background-radius : 100;
+    -fx-background-color: #cecece;
+    -fx-padding: 0 6 0 6;
+    -fx-cursor: hand;
+}
+
+
+
+/*******************************************************
+*                                                      *
+* Bar                                                  *
+*                                                      * 
+*******************************************************/
+
+.bar {
+    -fx-background-color:  white;
+}
+
+
+.bar .button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-border-style: none;
+    -fx-background-repeat:no-repeat;
+}
+
+.bar #btn-minimize{
+   -fx-background-image:url("../images/minimize.png");
+}
+
+.bar #btn-minimize:hover{
+   -fx-background-image:url("../images/minimize-hover.png");
+}
+
+.bar #btn-maximize{
+   -fx-background-image:url("../images/maximize.png");
+}
+
+.bar #btn-maximize:hover{
+   -fx-background-image:url("../images/maximize-hover.png");
+}
+
+
+.bar #btn-restore {
+   -fx-background-image:url("../images/restore.png");
+}
+
+.bar #btn-restore:hover {
+   -fx-background-image:url("../images/restore-hover.png");
+}
+
+.bar #btn-fullscreen{
+   -fx-background-image:url("../images/fullscreen.png");
+}
+
+.bar #btn-fullscreen:hover{
+   -fx-background-image:url("../images/fullscreen-hover.png");
+}
+
+
+.bar #btn-close{
+    -fx-background-image:url("../images/close.png");
+}
+
+.bar #btn-close:hover{
+    -fx-background-image:url("../images/close-hover.png");
+}
+
+.bar .button .tooltip {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em;  /*4 8 4 8 */
+    -fx-font-family: "Segoe UI Semilight", "Segoe UI Light", "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-text-fill: rgba(0, 0, 0, 0.6);
+    -fx-border-color: #808080;
+    -fx-border-width: 2px;
+}
+
+.bar #buttons {
+    -fx-min-width: 100;
+    -fx-min-height: 30;
+}
+
+#menu-bar {
+ -fx-background-color:  white;
+}
+
+
+
+
+/*******************************************************
+*                                                      *
+* content                                              *
+*                                                      * 
+*******************************************************/
+
+.content {
+    -fx-background-color: white;
+}
+
+#title {
+    -fx-aligment : center;
+}

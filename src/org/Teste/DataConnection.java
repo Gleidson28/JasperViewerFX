@@ -7,7 +7,7 @@
  *
  */
 
-package Global.Conexoes;
+package org.Teste;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -164,17 +164,18 @@ public class DataConnection {
      * @throws java.lang.InstantiationException lançamento de exceções de instância.
      * @throws java.lang.IllegalAccessException lançamento de exceções para erro de acesso.
      */
-    public void initConnection() {
+    public boolean initConnection() {
         // Configura a classe a ser utilizada e cria uma instância com ela 
         try {
             Class.forName(driver).newInstance();
             // responsavel por configurar as propriedade do driver de conexão
             connection = DriverManager.getConnection(url, user, password);
+            return true;
         } catch (SQLException | IllegalAccessException | InstantiationException | ClassNotFoundException ex) {
 
             ex.printStackTrace();
         }
-        
+        return false;
     }
 
     /**
@@ -258,11 +259,5 @@ public class DataConnection {
             dialogo.showAndWait(); // Inicia o show/tela
             return false;
         }
-    }
-    
-    public static void main(String[] args) {
-        DataConnection data = new DataConnection();
-        data.initConnection();
-        System.out.println(data.getUser());
     }
 }

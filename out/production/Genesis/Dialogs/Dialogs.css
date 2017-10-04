@@ -1,0 +1,26 @@
+/*
+ *
+ * Projeto desenvolvido por Gleidson Neves da Silveira - Faculdade Nossa Senhora de Aparecida.
+ * O uso deste projeto se destina aos participantes do grupo ao qual participa Gleidson Neves da Silveira.
+ *
+ *      http://www.fanap.br
+ *
+ */
+/* 
+    Created on : 26/03/2017, 21:17:08
+    Author     : Gleidson Neves da Silveira
+*/
+
+
+.jfx-button {
+    -fx-text-fill: rgba(0,0,0,.8);
+    -fx-background-radius: 0;
+    -fx-pref-width: 80;
+    -fx-pref-height: 80;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-width: 1;
+    -fx-border-color: white;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}

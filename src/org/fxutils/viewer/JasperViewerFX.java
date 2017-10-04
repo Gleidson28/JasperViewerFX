@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Gustavo Fragoso
+ * Copyright (C) 2017 Gleidson Neves da Silveira
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +16,13 @@
  */
 package org.fxutils.viewer;
 
-
-
-import Decoration.GNDecoration;
+import Genesis.Controls.Decoration.Control.GNDecoration;
+import Genesis.Controls.Decoration.Control.Theme;
 import com.jfoenix.controls.JFXButton;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -30,6 +30,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
@@ -37,6 +38,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.*;
@@ -51,23 +53,16 @@ import net.sf.jasperreports.export.SimpleWriterExporterOutput;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
-import javafx.geometry.Insets;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
-import javafx.scene.paint.Color;
 
-/**
- * Created by gleidson on 28/06/17.
- */
+
 public class JasperViewerFX {
 
     private final Stage dialog = new Stage();
-    GNDecoration decoration = new GNDecoration();
+    GNDecoration decoration;
     private JFXButton print, save, back, firstPage, next, lastPage, zoomIn, zoomOut;
     private ImageView report;
     private TextField txtPage;
@@ -81,7 +76,7 @@ public class JasperViewerFX {
     // Zoom
     private int imageHeight = 0, imageWidth = 0;
 
-    public JasperViewerFX(Stage owner, String title, String jasper, HashMap params, Connection con) {
+    public JasperViewerFX(String title, String jasper, HashMap params, Connection con, Theme theme, Color color) {
 
         // Initializing window
 //        decoration = new Stage();
@@ -93,8 +88,9 @@ public class JasperViewerFX {
 
 //        try {
 //            GNDecoration decoration = new GNDecoration();
-//            decoration.initTheme(Theme.WHITE);
-            decoration.setContent(createContent());
+        decoration.initTheme(theme);
+        decoration.setColor(color);
+        decoration.setBody(createContent());
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -113,7 +109,7 @@ public class JasperViewerFX {
         }
     }
 
-    public JasperViewerFX(String title, String jasper, HashMap params, Connection con) {
+    public JasperViewerFX(String title, String jasper, HashMap params, Connection con, Theme color) {
 
         // Initializing window
 //        decoration = new Stage();
@@ -125,9 +121,8 @@ public class JasperViewerFX {
 
 //        try {
 //            GNDecoration decoration = new GNDecoration();
-//            decoration.initTheme(Theme.WHITE);
-            decoration.setTitle(title);
-            decoration.setContent(createContent());
+            decoration.initTheme(color);
+            decoration.setBody(createContent());
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -146,7 +141,38 @@ public class JasperViewerFX {
         }
     }
 
-    public JasperViewerFX(Stage owner, String title, String jasper, HashMap params, JRBeanCollectionDataSource source) {
+    public JasperViewerFX(String title, String jasper, HashMap params, Connection con, Color color) {
+
+        // Initializing window
+//        decoration = new Stage();
+//        decoration.initModality(Modality.WINDOW_MODAL);
+//        decoration.initOwner(owner);
+//        decoration.setScene(createScene());
+//        decoration.setTitle(title);
+
+
+
+        decoration = new GNDecoration();
+        decoration.setBody(createContent());
+        decoration.initTheme(Theme.LIGHT);
+        decoration.setColor(color);
+//        decoration.setTitle(title);
+
+        try {
+            URL arquivo = getClass().getResource(jasper);
+            jreport = (JasperReport) JRLoader.loadObject(arquivo);
+            jprint = JasperFillManager.fillReport(jreport, params, con);
+
+            imageHeight = jprint.getPageHeight() + 284;
+            imageWidth = jprint.getPageWidth() + 201;
+            reportPages = jprint.getPages().size();
+
+        } catch (JRException ex) {
+
+        }
+    }
+
+//    public JasperViewerFX(String title, String jasper, HashMap params, JRBeanCollectionDataSource source) {
 
 
         // Initializing window
@@ -160,29 +186,32 @@ public class JasperViewerFX {
 //        try {
 
 //            decoration.initTheme(Theme.WHITE);
-            decoration.setContent(createContent());
+//        decoration.setContent(createContent());
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 
-        try {
-            URL arquivo = getClass().getResource(jasper);
-            jreport = (JasperReport) JRLoader.loadObject(arquivo);
-            jprint = JasperFillManager.fillReport(jreport, params, source);
-            imageHeight = jprint.getPageHeight() + 284;
-            imageWidth = jprint.getPageWidth() + 201;
-            reportPages = jprint.getPages().size();
-
-        } catch (JRException ex) {
-        }
-    }
-
+//        try {
+//            URL arquivo = getClass().getResource(jasper);
+//            jreport = (JasperReport) JRLoader.loadObject(arquivo);
+//            jprint = JasperFillManager.fillReport(jreport, params, source);
+//            imageHeight = jprint.getPageHeight() + 284;
+//            imageWidth = jprint.getPageWidth() + 201;
+//            reportPages = jprint.getPages().size();
+//
+//        } catch (JRException ex) {
+//        }
+//    }
+//
     private Parent createContent() {
+
         HBox menu = new HBox(5);
+
         menu.setPrefHeight(60.0D);
+
         menu.setAlignment(Pos.CENTER);
         menu.setId("menu");
-        
+
         ImageView b1 = new ImageView("org/fxutils/icons/printer.png");
         ImageView b2 = new ImageView("org/fxutils/icons/save.png");
         ImageView b3 = new ImageView("org/fxutils/icons/navigate-before.png");
@@ -214,7 +243,7 @@ public class JasperViewerFX {
         DropShadow shadow = new DropShadow(4, Color.GRAY);
         report.setEffect(shadow);
 
-        
+
         Group contentGroup = new Group();
         contentGroup.getChildren().add(report);
 
@@ -425,7 +454,7 @@ public class JasperViewerFX {
         if (reportPages > 0) {
             start();
             decoration.getScene().getStylesheets().add(getClass().getResource("JasperView.css").toExternalForm());
-            decoration.show();
+            decoration.start();
         } else {
             Alert aviso = new Alert(Alert.AlertType.INFORMATION, "We found 0 entries for this report", ButtonType.CLOSE);
             aviso.setHeaderText("Sorry");

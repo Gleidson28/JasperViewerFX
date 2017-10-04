@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.ClosePath?>
+<?import javafx.scene.shape.LineTo?>
+<?import javafx.scene.shape.MoveTo?>
+<?import javafx.scene.shape.Path?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="win" cache="true" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Decoration.Controller.WindowController">
+   <children>
+      <AnchorPane fx:id="content" layoutX="10.0" layoutY="125.0" styleClass="content" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <AnchorPane fx:id="bar" onMouseClicked="#moveClicked" onMouseDragged="#moveDragged" onMousePressed="#movePressed" onMouseReleased="#moveReleased" prefWidth="363.0" style="-fx-border-width: 1;" styleClass="bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="bar_content" alignment="TOP_CENTER" styleClass="bar-content" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox fx:id="bar_left" alignment="CENTER" prefHeight="30.0" prefWidth="35.0" />
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="title" alignment="CENTER" contentDisplay="CENTER" mouseTransparent="true" styleClass="title" text="Title For application" textAlignment="JUSTIFY" textFill="#00000080" translateX="20.0" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox id="buttons" fx:id="buttons" alignment="TOP_RIGHT" minHeight="30.0" minWidth="100.0" prefHeight="30.0" prefWidth="100.0" styleClass="buttons">
+                     <children>
+                        <Button id="btn-minimize" fx:id="btn_minimizar" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#minimize" prefHeight="35.0" prefWidth="34.0">
+                           <tooltip>
+                              <Tooltip text="Minimizar" />
+                           </tooltip>
+                        </Button>
+                        <Button id="btn-maximize" fx:id="btn_maximizar" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#maximize" prefHeight="33.0" prefWidth="34.0" style="-fx-border-color: transparent;">
+                           <tooltip>
+                              <Tooltip text="Maximizar" />
+                           </tooltip>
+                        </Button>
+                        <Button id="btn-close" fx:id="btn_fechar" contentDisplay="GRAPHIC_ONLY" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#close" prefHeight="33.0" prefWidth="34.0" style="-fx-border-color: transparent;">
+                           <tooltip>
+                              <Tooltip fx:id="Fechar" text="Fechar" />
+                           </tooltip>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox id="#menu-bar" fx:id="content_menu" alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+         </children>
+      </AnchorPane>
+      <Path fx:id="top_left" fill="BLACK" onMouseDragged="#resizeUpLeftDragged" onMousePressed="#resizeUpLeftPressed" opacity="0.0" stroke="#ffffff00" strokeType="INSIDE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <elements>
+            <MoveTo x="100.0" y="-40.0" />
+            <LineTo x="120.0" y="-40.0" />
+            <LineTo x="120.0" y="-37.0" />
+            <LineTo x="103.0" y="-37.0" />
+            <LineTo x="103.0" y="-20.0" />
+            <LineTo x="100.0" y="-20.0" />
+            <ClosePath />
+         </elements>
+         <cursor>
+            <Cursor fx:constant="NW_RESIZE" />
+         </cursor>
+      </Path>
+      <AnchorPane fx:id="left" minHeight="1.0" minWidth="1.0" onMouseDragged="#resizeLeftDragged" onMousePressed="#resizeLeftPressed" opacity="0.0" prefWidth="3.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="20.0">
+         <cursor>
+            <Cursor fx:constant="W_RESIZE" />
+         </cursor>
+      </AnchorPane>
+      <Path fx:id="top_right" fill="BLACK" layoutX="-90.0" layoutY="50.0" onMouseDragged="#resizeUpRightDragged" onMousePressed="#resizeUpRightPressed" opacity="0.0" rotate="90.0" stroke="#ffffff00" strokeType="INSIDE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <elements>
+            <MoveTo x="100.0" y="-40.0" />
+            <LineTo x="120.0" y="-40.0" />
+            <LineTo x="120.0" y="-37.0" />
+            <LineTo x="103.0" y="-37.0" />
+            <LineTo x="103.0" y="-20.0" />
+            <LineTo x="100.0" y="-20.0" />
+            <ClosePath />
+         </elements>
+         <cursor>
+            <Cursor fx:constant="NE_RESIZE" />
+         </cursor>
+      </Path>
+      <AnchorPane fx:id="top" layoutX="10.0" layoutY="30.0" minHeight="1.0" minWidth="1.0" onMouseDragged="#resizeUpDragged" onMousePressed="#resizeUpPressed" opacity="0.0" prefHeight="3.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+         <cursor>
+            <Cursor fx:constant="N_RESIZE" />
+         </cursor>
+      </AnchorPane>
+      <Path fx:id="bottom_left" fill="BLACK" layoutX="-90.0" layoutY="50.0" onMouseDragged="#resizeDownLeftDragged" onMousePressed="#resizeDownLeftPressed" opacity="0.0" rotate="270.0" stroke="#ff000000" strokeType="INSIDE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <elements>
+            <MoveTo x="100.0" y="-40.0" />
+            <LineTo x="120.0" y="-40.0" />
+            <LineTo x="120.0" y="-37.0" />
+            <LineTo x="103.0" y="-37.0" />
+            <LineTo x="103.0" y="-20.0" />
+            <LineTo x="100.0" y="-20.0" />
+            <ClosePath />
+         </elements>
+         <cursor>
+            <Cursor fx:constant="SW_RESIZE" />
+         </cursor>
+      </Path>
+      <AnchorPane fx:id="right" layoutX="25.0" layoutY="10.0" minHeight="1.0" minWidth="1.0" onMouseDragged="#resizeRightDragged" onMousePressed="#resizeRightPressed" opacity="0.0" prefWidth="3.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+         <cursor>
+            <Cursor fx:constant="E_RESIZE" />
+         </cursor>
+      </AnchorPane>
+      <Path fx:id="bottom_right" fill="BLACK" layoutX="10.0" layoutY="10.0" onMouseDragged="#resizeDownRightDragged" onMousePressed="#resizeDownRightPressed" opacity="0.0" rotate="180.0" stroke="#ffffff00" strokeType="INSIDE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <elements>
+            <MoveTo x="100.0" y="-40.0" />
+            <LineTo x="120.0" y="-40.0" />
+            <LineTo x="120.0" y="-37.0" />
+            <LineTo x="103.0" y="-37.0" />
+            <LineTo x="103.0" y="-20.0" />
+            <LineTo x="100.0" y="-20.0" />
+            <ClosePath />
+         </elements>
+         <cursor>
+            <Cursor fx:constant="SE_RESIZE" />
+         </cursor>
+      </Path>
+      <AnchorPane fx:id="bottom" layoutX="525.0" layoutY="25.0" minHeight="3.0" minWidth="1.0" onMouseDragged="#resizeDownDragged" onMousePressed="#resizeDownPressed" prefHeight="3.0" styleClass="group18" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+         <cursor>
+            <Cursor fx:constant="S_RESIZE" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="border_top" mouseTransparent="true" prefHeight="1.0" styleClass="group18" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="border_right" layoutX="10.0" layoutY="10.0" mouseTransparent="true" prefWidth="1.0" styleClass="group18" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="border_bottom" layoutX="10.0" layoutY="480.0" mouseTransparent="true" prefHeight="1.0" styleClass="group18" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane fx:id="border_left" layoutX="20.0" layoutY="490.0" mouseTransparent="true" prefWidth="1.0" styleClass="group18" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <effect>
+      <DropShadow color="#00000059" />
+   </effect>
+</AnchorPane>

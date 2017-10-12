@@ -137,26 +137,17 @@ public class JasperViewerFX {
             reportPages = jprint.getPages().size();
 
         } catch (JRException ex) {
-
+                System.out.println("Aki");
         }
     }
 
     public JasperViewerFX(String title, String jasper, HashMap params, Connection con, Color color) {
 
-        // Initializing window
-//        decoration = new Stage();
-//        decoration.initModality(Modality.WINDOW_MODAL);
-//        decoration.initOwner(owner);
-//        decoration.setScene(createScene());
-//        decoration.setTitle(title);
-
-
-
         decoration = new GNDecoration();
         decoration.setBody(createContent());
         decoration.initTheme(Theme.LIGHT);
         decoration.setColor(color);
-//        decoration.setTitle(title);
+        decoration.setTitle(title);
 
         try {
             URL arquivo = getClass().getResource(jasper);
@@ -168,7 +159,7 @@ public class JasperViewerFX {
             reportPages = jprint.getPages().size();
 
         } catch (JRException ex) {
-
+            ex.printStackTrace();
         }
     }
 
@@ -269,80 +260,43 @@ public class JasperViewerFX {
     private void start() {
         viewPage(0);
 
-        print.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                printAction();
-            }
+        print.setOnAction((ActionEvent event) -> {
+            printAction();
         });
-        save.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                saveAction();
-            }
+        save.setOnAction((ActionEvent event) -> {
+            saveAction();
         });
-        back.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                backAction();
-            }
+        back.setOnAction((ActionEvent event) -> {
+            backAction();
         });
-        next.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                nextAction();
-            }
+        next.setOnAction((ActionEvent event) -> {
+            nextAction();
         });
-        firstPage.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                firstPageAction();
-            }
+        firstPage.setOnAction((ActionEvent event) -> {
+            firstPageAction();
         });
-        lastPage.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                lastPageAction();
-            }
+        lastPage.setOnAction((ActionEvent event) -> {
+            lastPageAction();
         });
-        zoomIn.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                zoomInAction();
-            }
+        zoomIn.setOnAction((ActionEvent event) -> {
+            zoomInAction();
         });
-        zoomOut.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                zoomOutAction();
-            }
+        zoomOut.setOnAction((ActionEvent event) -> {
+            zoomOutAction();
         });
-        txtPage.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
-                    try {
-                        int p = Integer.parseInt(txtPage.getText());
-                        if (p > reportPages) {
-                            txtPage.setText(Integer.toString(reportPages));
-                            viewPage(reportPages - 1);
-                        } else {
-                            viewPage(p - 1);
-                        }
-                    } catch (Exception e) {
-                        Alert dialog = new Alert(Alert.AlertType.WARNING, "Invalid number", ButtonType.OK);
-                        dialog.show();
+        txtPage.setOnKeyPressed((KeyEvent event) -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    int p = Integer.parseInt(txtPage.getText());
+                    if (p > reportPages) {
+                        txtPage.setText(Integer.toString(reportPages));
+                        viewPage(reportPages - 1);
+                    } else {
+                        viewPage(p - 1);
                     }
-
+                } catch (Exception e) {
+                    Alert dialog1 = new Alert(Alert.AlertType.WARNING, "Invalid number", ButtonType.OK);
+                    dialog1.show();
                 }
             }
         });

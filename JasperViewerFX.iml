@@ -7,8 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Genesis" />
-    <orderEntry type="library" name="Jfoenix" level="project" />
+    <orderEntry type="module" module-name="Genesis" exported="" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -93,7 +92,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/jfoenix.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-5.1.23-bin.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -102,7 +101,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-5.1.23-bin.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../Bibliotecas/Jfoenix/jfoenix-0.0.0-SNAPSHOT-retrolambda.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

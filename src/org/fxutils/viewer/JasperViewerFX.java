@@ -25,6 +25,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -41,7 +42,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.JRCsvExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
@@ -57,6 +57,13 @@ import java.net.URL;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
+import javafx.stage.Screen;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
 
 
 public class JasperViewerFX {
@@ -75,6 +82,10 @@ public class JasperViewerFX {
 
     // Zoom
     private int imageHeight = 0, imageWidth = 0;
+
+    public JasperViewerFX(Node Content){
+        createContent();
+    }
 
     public JasperViewerFX(String title, String jasper, HashMap params, Connection con, Theme theme, Color color) {
 
@@ -148,7 +159,7 @@ public class JasperViewerFX {
         decoration.initTheme(Theme.LIGHT);
         decoration.setColor(color);
         decoration.setTitle(title);
-
+        decoration.setMaximized(true);
         try {
             URL arquivo = getClass().getResource(jasper);
             jreport = (JasperReport) JRLoader.loadObject(arquivo);
@@ -159,7 +170,6 @@ public class JasperViewerFX {
             reportPages = jprint.getPages().size();
 
         } catch (JRException ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -252,7 +262,8 @@ public class JasperViewerFX {
         root.setCenter(scroll);
         root.setTop(menu);
 
-        root.setPrefSize(1024, 768);
+//        root.setPrefSize(1024, 728);
+//        root.setPrefSize(Screen.getPrimary().getVisualBounds().getWidth(), Screen.getPrimary().getVisualBounds().getHeight());
 
         return root;
     }

@@ -1,6 +1,8 @@
 
 package org.Teste;
 
+import Genesis.Controls.Decoration.Control.GNDecoration;
+import Genesis.Controls.Decoration.Control.Theme;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,7 +14,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import net.sf.jasperreports.engine.JRException;
 import org.fxutils.viewer.JasperViewerFX;
 
 /**
@@ -25,7 +26,9 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        GNDecoration decoration = new GNDecoration();
         VBox root = new VBox();
+        decoration.setBody(root);
         root.setAlignment(Pos.CENTER);
         Button btn = new Button("open report");
         root.getChildren().add(btn);
@@ -34,16 +37,15 @@ public class Main extends Application{
         has.put("Nome", "Goku");
         System.out.println(connection.initConnection());
         btn.setOnMouseClicked((e) -> {
-            JasperViewerFX jvfx = new JasperViewerFX("Clientes", "clientes.jasper", has, connection.getConnection(), Color.web("white"));
+            JasperViewerFX jvfx = new JasperViewerFX("Clientes", "lista_clientes.jasper", has, connection.getConnection(), Color.web("white"));
             jvfx.show();
             connection.closeConnection();
             primaryStage.close();
         });
 
-        Scene scene = new Scene(root, 400, 400);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
+        decoration.initTheme(Theme.LIGHT);
+        decoration.setColor(Color.WHITE);
+        decoration.start();
     }
 
     public static void main(String[] args) {
